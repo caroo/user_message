@@ -3,8 +3,8 @@ require File.dirname(__FILE__) + '/test_helper.rb'
 class TestMessage < Test::Unit::TestCase
   
   def test_should_have_an_user_message_type_associated
-    message = UserMessage::Message.new(:type => UserMessageTypes::Error)
-    assert_equal UserMessageTypes::Error, message.type
+    message = UserMessage::Message.new(:type => UserMessage::MessageTypes::Error)
+    assert_equal UserMessage::MessageTypes::Error, message.type
   end
   
   def test_should_have_a_headline
@@ -19,7 +19,7 @@ class TestMessage < Test::Unit::TestCase
   
   def test_should_have_default_user_message_type_set_to_info
     message = UserMessage::Message.new
-    assert_equal UserMessageTypes::Info, message.type
+    assert_equal UserMessage::MessageTypes::Info, message.type
   end
   
   def test_should_have_more_than_one_body_element_to_print
@@ -33,7 +33,7 @@ class TestMessage < Test::Unit::TestCase
     ar_errors.add("firstname", "Ein Name muss vorhanden sein.")
     ar_errors.add("zipcode", "PLZ muss gegeben sein.")
     ar_errors.add("firstname", "Der Name darf keine Sonderzeichen enthalten.")
-    message = UserMessage::Message.new(:type => UserMessageTypes::Error,
+    message = UserMessage::Message.new(:type => UserMessage::MessageTypes::Error,
                               :body => ar_errors)
     assert_equal 3, message.body.size
   end
@@ -43,7 +43,7 @@ class TestMessage < Test::Unit::TestCase
     ar_errors.add("firstname", "Ein Name muss vorhanden sein.")
     ar_errors.add("zipcode", "PLZ muss gegeben sein.")
     ar_errors.add("firstname", "Der Name darf keine Sonderzeichen enthalten.")
-    message = UserMessage::Message.new(:type => UserMessageTypes::Error,
+    message = UserMessage::Message.new(:type => UserMessage::MessageTypes::Error,
                               :body => ar_errors)
     message.body << "Fahren sie vorsichtig!"
     assert_equal 4, message.body.size

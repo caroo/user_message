@@ -1,19 +1,21 @@
-enum :UserMessageTypes do
+module UserMessage
+  enum :MessageTypes do
   
-  attr_reader :color
+    attr_reader :color
   
-  Error({:color => :red})
-  Info({:color => :green})
-  System({:color => :orange})
-  Sold({:color => :red})
-  NoResult({:color => nil})
+    Error({:color => :red})
+    Info({:color => :green})
+    System({:color => :orange})
+    Sold({:color => :red})
+    NoResult({:color => nil})
   
-  def init(attributes_hash)
-    @color = attributes_hash[:color]
+    def init(attributes_hash)
+      @color = attributes_hash[:color]
+    end
+  
+    def name
+      I18n.t(@name.downcase, :scope => [:frontend, :user_message_types])
+    end
+  
   end
-  
-  def name
-    I18n.t(@name.downcase, :scope => [:frontend, :user_message_types])
-  end
-  
 end

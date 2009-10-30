@@ -20,7 +20,7 @@ class TestMessageHelper < Test::Unit::TestCase
     errors.add("company", "Es sind keine Sonderzeichen erlaubt.")
     
     message = UserMessage::Message.new(
-      :type => UserMessageTypes::Error,
+      :type => UserMessage::MessageTypes::Error,
       :headline => "Überprüfen Sie Ihre Eingaben",
       :body => errors
     )

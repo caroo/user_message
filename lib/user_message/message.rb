@@ -33,7 +33,7 @@ module UserMessage
     def initialize(options = {})
       @headline = options[:headline]
       @body     = Body.new(options[:body])
-      @type     = options[:type] || UserMessageTypes::Info
+      @type     = options[:type] || UserMessage::MessageTypes::Info
     end
     
   end
