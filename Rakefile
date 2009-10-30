@@ -18,6 +18,7 @@ $hoe = Hoe.spec 'user_message' do
   self.extra_deps         = [
     ['activesupport', '>= 2.3.2'], # for I18n
     ['activerecord', '>= 2.3.2'], # for ActiveRecord::Errors
+    ['actionpack', '>= 2.3.2'],
     ['actionmailer', '>= 2.3.2'], # for ActionController::Flash
     ['pkwde-renum']
   ]
