@@ -10,5 +10,5 @@ require 'user_message/message_helper'
 
 
 module UserMessage
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
 end

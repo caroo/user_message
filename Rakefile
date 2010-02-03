@@ -12,7 +12,7 @@ Hoe.plugin :newgem
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'user_message' do
   self.developer 'pkw.de Development Team', 'dev@pkw.de'
-  self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
+  # self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   # self.rubyforge_name       = self.name # TODO this is default value
   
   self.extra_deps         = [
@@ -20,7 +20,7 @@ $hoe = Hoe.spec 'user_message' do
     ['activerecord', '>= 2.3.2'], # for ActiveRecord::Errors
     ['actionpack', '>= 2.3.2'],
     ['actionmailer', '>= 2.3.2'], # for ActionController::Flash
-    ['pkwde-renum']
+    ['renum', ">=1.2.0"]
   ]
   
   self.extra_dev_deps = [
