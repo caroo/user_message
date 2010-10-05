@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/test_helper.rb'
 
 class MessageHelperTest < Test::Unit::TestCase
   include UserMessage::MessageHelper
+  include ActionView::Helpers::TagHelper
   
   # nur um ActionController zu simmulieren, nötig damit ActionController::Flash funktioniert
   def assign_shortcuts;end
@@ -39,6 +40,10 @@ class MessageHelperTest < Test::Unit::TestCase
     })
     
     render_user_messages
+  end
+  
+  def test_should_render_empty_user_message_container
+    assert_equal "<div id=\"user_message\" style=\"display:none\"></div>", render_user_messages
   end
 
 end

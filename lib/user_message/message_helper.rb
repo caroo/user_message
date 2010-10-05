@@ -12,7 +12,7 @@ module UserMessage
             :div_id    => div_id
           }
       else
-        content_tag :div, :id => div_id, :style => "display:none"
+        content_tag :div, "", :id => div_id, :style => "display:none"
       end
     end
     
