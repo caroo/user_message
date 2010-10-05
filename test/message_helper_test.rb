@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class TestMessageHelper < Test::Unit::TestCase
+class MessageHelperTest < Test::Unit::TestCase
   include UserMessage::MessageHelper
   
   # nur um ActionController zu simmulieren, nötig damit ActionController::Flash funktioniert

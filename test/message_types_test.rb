@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class TestMessageTypes < Test::Unit::TestCase
+class MessageTypesTest < Test::Unit::TestCase
   
   def test_should_have_error_message
     assert_kind_of UserMessage::MessageTypes, UserMessage::MessageTypes::Error

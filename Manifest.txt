@@ -9,8 +9,9 @@ lib/user_message/message_types.rb
 script/console
 script/destroy
 script/generate
+test/message_helper_test.rb
+test/message_test.rb
+test/message_types_test.rb
 test/test_helper.rb
-test/test_message.rb
-test/test_message_helper.rb
-test/test_message_types.rb
+user_message.gemspec
 user_message.tmproj

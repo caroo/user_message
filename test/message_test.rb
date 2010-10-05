@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class TestMessage < Test::Unit::TestCase
+class MessageTest < Test::Unit::TestCase
   
   def test_should_have_an_user_message_type_associated
     message = UserMessage::Message.new(:type => UserMessage::MessageTypes::Error)
