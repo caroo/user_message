@@ -1,14 +1,16 @@
-require File.dirname(__FILE__) + '/test_helper.rb'
+require 'test_helper.rb'
 
 class MessageHelperTest < Test::Unit::TestCase
   include UserMessage::MessageHelper
   include ActionView::Helpers::TagHelper
   
   # nur um ActionController zu simmulieren, nötig damit ActionController::Flash funktioniert
-  def assign_shortcuts;end
-  def perform_action;end
-  def reset_session;end
-  def session
+  def assign_shortcuts(*);end
+  def perform_action(*);end
+  def reset_session(*);end
+  def redirect_to(*);end
+  def self.helper_method(*);end
+  def session(*)
     {}
   end
   
