@@ -36,22 +36,26 @@ class MessageTypesTest < Test::Unit::TestCase
   
   def test_should_have_string_representation_fehler_for_error
     I18n.expects(:t).returns("Fehler")
-    assert_equal "Fehler", UserMessage::MessageTypes::Error.name
+    assert_equal "Error", UserMessage::MessageTypes::Error.name
+    assert_equal "Fehler", UserMessage::MessageTypes::Error.to_s
   end
   
   def test_should_have_string_representation_info_for_info
     I18n.expects(:t).returns("Info")
     assert_equal "Info", UserMessage::MessageTypes::Info.name
+    assert_equal "Info", UserMessage::MessageTypes::Info.to_s
   end
   
   def test_should_have_string_representation_system_for_error
     I18n.expects(:t).returns("System")
     assert_equal "System", UserMessage::MessageTypes::System.name
+    assert_equal "System", UserMessage::MessageTypes::System.to_s
   end
   
   def test_should_have_string_representation_verkauft_for_error
     I18n.expects(:t).returns("Verkauft")
-    assert_equal "Verkauft", UserMessage::MessageTypes::Sold.name
+    assert_equal "Sold", UserMessage::MessageTypes::Sold.name
+    assert_equal "Verkauft", UserMessage::MessageTypes::Sold.to_s
   end
   
 end

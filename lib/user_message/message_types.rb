@@ -9,9 +9,8 @@ module UserMessage
     Sold({:color => :red})
     NoResult({:color => nil})
   
-    def name
+    def to_s
       I18n.t(@name.downcase, :scope => [:frontend, :user_message_types])
     end
-  
   end
 end

@@ -52,5 +52,14 @@ class MessageTest < Test::Unit::TestCase
       assert_kind_of String, body_element
     end
   end
-  
+
+  if defined?(::JSON)
+    def test_should_serialise_message_type_in_json
+      message = UserMessage::Message.new(:type => UserMessage::MessageTypes::Error)
+      message_json = message.to_json(:fields => true)
+      message_again = JSON.parse(message_json, :create_additions => false)
+      assert_not_nil message_again['type']
+      assert_equal 'red', message_again['type']['color']
+    end
+  end
 end

@@ -17,14 +17,14 @@ module UserMessage
       def <<(string_or_ar_errors)
         @content << string_or_ar_errors
       end
-      
+
       private
-        
-        def merged_content
-          @content.inject([]) do |mem, content|
-            mem + (content.respond_to?(:full_messages) ? content.collect {|attr, msg| msg} : [content])
-          end
+ 
+      def merged_content
+        @content.inject([]) do |mem, content|
+          mem + (content.respond_to?(:full_messages) ? content.collect {|attr, msg| msg} : [content])
         end
+      end
         
     end
     
@@ -35,6 +35,16 @@ module UserMessage
       @body     = Body.new(options[:body])
       @type     = options[:type] || UserMessage::MessageTypes::Info
     end
-    
+
+    if defined?(::JSON)
+      def to_json(*a)
+        {
+          ::JSON.create_id => self.class.name,
+          :headline      => @headline,
+          :body          => @body,
+          :type          => @type,
+        }.to_json(*a)
+      end
+    end
   end
 end
