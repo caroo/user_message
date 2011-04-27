@@ -5,11 +5,12 @@ module UserMessage
       if flash[:messages].present?
         render :partial => "shared/user_message",
           :locals => {
-            :color     => flash[:messages].type.color,
-            :type_name => flash[:messages].type.name,
-            :headline  => flash[:messages].headline,
-            :body      => flash[:messages].body,
-            :div_id    => div_id
+            :color           => flash[:messages].type.color,
+            :type_name       => flash[:messages].type.name,
+            :type_translated => flash[:messages].type.to_s,
+            :headline        => flash[:messages].headline,
+            :body            => flash[:messages].body,
+            :div_id          => div_id
           }
       else
         content_tag :div, "", :id => div_id, :style => "display:none"
