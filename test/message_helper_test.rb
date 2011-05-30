@@ -31,7 +31,7 @@ class MessageHelperTest < Test::Unit::TestCase
     flash[:messages] = message
     
     self.expects(:render).with({
-      :partial => "user_message",
+      :partial => "shared/user_message",
       :locals => {
         :color => message.type.color,
         :type_name => message.type.name,

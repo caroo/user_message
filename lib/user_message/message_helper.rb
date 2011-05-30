@@ -3,7 +3,7 @@ module UserMessage
   
     def render_user_messages(div_id = "user_message")
       if flash[:messages].present?
-        render :partial => "user_message",
+        render :partial => "shared/user_message",
           :locals => {
             :color           => flash[:messages].type.color,
             :type_name       => flash[:messages].type.name,
