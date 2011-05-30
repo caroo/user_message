@@ -10,7 +10,7 @@ require 'user_message/message_helper'
 
 
 module UserMessage
-  VERSION = '0.1.1'
+  VERSION = '0.2.0'
 
   UserMessage::MessageTypes.each do |type|
     method_name = type.name.downcase

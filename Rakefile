@@ -14,10 +14,11 @@ $hoe = Hoe.spec 'user_message' do
   self.developer 'pkw.de Development Team', 'dev@pkw.de'
   
   self.extra_deps         = [
-    ['activesupport', '~> 2.3.5'], # for I18n
-    ['activerecord', '~> 2.3.5'], # for ActiveRecord::Errors
-    ['actionpack', '~> 2.3.5'], # for ActionController::Flash
-    ['renum', ">=1.2.0"]
+    ['activesupport', '~> 2.3.10'], # for I18n
+    ['activerecord', '~> 2.3.10'], # for ActiveRecord::Errors
+    ['actionpack', '~> 2.3.10'], # for ActionController::Flash
+    ['renum', ">=1.3.0"],
+    ['i18n', '~> 0.5.0']
   ]
   
   self.extra_dev_deps = [

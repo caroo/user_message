@@ -1,11 +1,17 @@
+Gemfile
+Gemfile.lock
 History.txt
 Manifest.txt
 README.rdoc
 Rakefile
+init.rb
 lib/user_message.rb
 lib/user_message/message.rb
 lib/user_message/message_helper.rb
 lib/user_message/message_types.rb
+lib/views/_user_message.html.erb
+locale/de.yml
+locale/en.yml
 script/console
 script/destroy
 script/generate
@@ -14,4 +20,3 @@ test/message_test.rb
 test/message_types_test.rb
 test/test_helper.rb
 user_message.gemspec
-user_message.tmproj
