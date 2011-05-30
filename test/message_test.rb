@@ -35,7 +35,7 @@ class MessageTest < Test::Unit::TestCase
     ar_errors.add("firstname", "Der Name darf keine Sonderzeichen enthalten.")
     message = UserMessage::Message.new(:type => UserMessage::MessageTypes::Error,
                               :body => ar_errors)
-    assert_equal 3, message.body.size
+    assert_equal 3, message.body.size, message.body.inspect
   end
   
   def test_should_have_simple_messages_and_active_record_errors_alongside_in_the_body_and_iterate_over_them_in_a_unified_way
@@ -54,7 +54,7 @@ class MessageTest < Test::Unit::TestCase
   end
   
   def test_should_have_shortcut_methods
-    user_message = UserMessage::Message.info("headline", "body")
+    user_message = UserMessage.info("headline", "body")
     assert_equal UserMessage::MessageTypes::Info, user_message.type
     assert_equal "headline", user_message.headline
     assert_equal "body", user_message.body.first

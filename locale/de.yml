@@ -1,0 +1,11 @@
+--- 
+de:
+  user_messages:
+    type:
+      error: Fehler
+      system: System
+      info: Info
+      sold: Verkauft
+      noresult: Keine Ergebnisse
+    headline:
+    body: 

@@ -2,12 +2,37 @@ require 'forwardable'
 
 module UserMessage
   class Message
-    class << self
-      ::UserMessage::MessageTypes.each do |type|
-        method_name = type.name.downcase
-        define_method method_name do |headline, body|
-          new(:type  => type, :headline => headline, :body => body)
-        end
+    
+    def self.translate(translation_key, type = "headline")
+      defaults = [
+        :"#{type}.#{translation_key}",
+        translation_key,
+        ActiveSupport::Inflector.humanize(translation_key)
+      ]
+      I18n.translate(defaults.shift, :default => defaults, :scope => [:user_messages])
+    end
+    
+    def initialize(options = {})
+      self.headline = options[:headline]
+      self.body     = Body.new(options[:body])
+      self.type     = options[:type] || UserMessage::MessageTypes::Info
+    end
+    
+    attr_accessor :body, :type
+    attr_reader :headline
+    
+    def headline=(content)
+      @headline = (content.is_a?(Symbol) ? UserMessage::Message.translate(content, "headline") : content)
+    end
+    
+    if defined?(::JSON)
+      def to_json(*a)
+        {
+          ::JSON.create_id => self.class.name,
+          :headline      => @headline,
+          :body          => @body,
+          :type          => @type,
+        }.to_json(*a)
       end
     end
     
@@ -22,37 +47,18 @@ module UserMessage
         self << string_or_ar_errors if string_or_ar_errors
       end
       
-      def <<(string_or_ar_errors)
-        @content << string_or_ar_errors
+      def <<(content)
+        @content << (content.is_a?(Symbol) ? UserMessage::Message.translate(content, "body") : content)
       end
 
       private
- 
+      
       def merged_content
         @content.inject([]) do |mem, content|
           mem + (content.respond_to?(:full_messages) ? content.collect {|attr, msg| msg} : [content])
         end
       end
-        
     end
     
-    attr_accessor :headline, :body, :type
-    
-    def initialize(options = {})
-      @headline = options[:headline]
-      @body     = Body.new(options[:body])
-      @type     = options[:type] || UserMessage::MessageTypes::Info
-    end
-
-    if defined?(::JSON)
-      def to_json(*a)
-        {
-          ::JSON.create_id => self.class.name,
-          :headline      => @headline,
-          :body          => @body,
-          :type          => @type,
-        }.to_json(*a)
-      end
-    end
   end
 end
