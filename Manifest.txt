@@ -8,7 +8,7 @@ lib/user_message.rb
 lib/user_message/message.rb
 lib/user_message/message_helper.rb
 lib/user_message/message_types.rb
-lib/views/_user_message.html.erb
+lib/views/shared/_user_message.html.erb
 locale/de.yml
 locale/en.yml
 rails/init.rb

@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{user_message}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["pkw.de Development Team"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{FIX (describe your package)}
   s.email = ["dev@pkw.de"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt"]
-  s.files = ["Gemfile", "Gemfile.lock", "History.txt", "Manifest.txt", "README.rdoc", "Rakefile", "lib/user_message.rb", "lib/user_message/message.rb", "lib/user_message/message_helper.rb", "lib/user_message/message_types.rb", "lib/views/_user_message.html.erb", "locale/de.yml", "locale/en.yml", "rails/init.rb", "script/console", "script/destroy", "script/generate", "test/message_helper_test.rb", "test/message_test.rb", "test/message_types_test.rb", "test/test_helper.rb", "user_message.gemspec"]
+  s.files = ["Gemfile", "Gemfile.lock", "History.txt", "Manifest.txt", "README.rdoc", "Rakefile", "lib/user_message.rb", "lib/user_message/message.rb", "lib/user_message/message_helper.rb", "lib/user_message/message_types.rb", "lib/views/shared/_user_message.html.erb", "locale/de.yml", "locale/en.yml", "rails/init.rb", "script/console", "script/destroy", "script/generate", "test/message_helper_test.rb", "test/message_test.rb", "test/message_types_test.rb", "test/test_helper.rb", "user_message.gemspec"]
   s.homepage = %q{http://github.com/#{github_username}/#{project_name}}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
