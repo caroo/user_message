@@ -3,8 +3,15 @@ require 'forwardable'
 module UserMessage
   class Message
     
+    # translates key with I18n
+    # lookup on following i18n keys for "registration_successful"
+    # * user_messages.registration_successfull.headline
+    # * user_messages.headline.registration_successful
+    # * user_messages.registration_successful
+    # * Registration Successful (humanized key version as fallback)
     def self.translate(translation_key, type = "headline")
       defaults = [
+        :"#{translation_key}.#{type}",
         :"#{type}.#{translation_key}",
         translation_key,
         ActiveSupport::Inflector.humanize(translation_key)
@@ -13,7 +20,8 @@ module UserMessage
     end
     
     def initialize(options = {})
-      self.headline = options[:headline]
+
+       self.headline = options[:headline]
       self.body     = Body.new(options[:body])
       self.type     = options[:type] || UserMessage::MessageTypes::Info
     end
