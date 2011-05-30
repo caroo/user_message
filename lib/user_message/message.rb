@@ -2,6 +2,14 @@ require 'forwardable'
 
 module UserMessage
   class Message
+    class << self
+      ::UserMessage::MessageTypes.each do |type|
+        method_name = type.name.downcase
+        define_method method_name do |headline, body|
+          new(:type  => type, :headline => headline, :body => body)
+        end
+      end
+    end
     
     class Body
       extend Forwardable

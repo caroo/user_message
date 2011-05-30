@@ -23,7 +23,7 @@ class MessageHelperTest < Test::Unit::TestCase
     errors.add("company", "Es sind keine Sonderzeichen erlaubt.")
     
     message = UserMessage::Message.new(
-      :type => UserMessage::MessageTypes::Error,
+      :type => UserMessage::MessageTypes::NoResult,
       :headline => "Überprüfen Sie Ihre Eingaben",
       :body => errors
     )
@@ -31,13 +31,14 @@ class MessageHelperTest < Test::Unit::TestCase
     flash[:messages] = message
     
     self.expects(:render).with({
-      :partial => "shared/user_message",
+      :partial => "user_message",
       :locals => {
         :color => message.type.color,
         :type_name => message.type.name,
         :headline => message.headline,
         :body => message.body,
-        :div_id => "user_message"
+        :div_id => "user_message",
+        :type_translated => "No results"
       }
     })
     

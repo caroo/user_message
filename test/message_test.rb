@@ -52,6 +52,13 @@ class MessageTest < Test::Unit::TestCase
       assert_kind_of String, body_element
     end
   end
+  
+  def test_should_have_shortcut_methods
+    user_message = UserMessage::Message.info("headline", "body")
+    assert_equal UserMessage::MessageTypes::Info, user_message.type
+    assert_equal "headline", user_message.headline
+    assert_equal "body", user_message.body.first
+  end
 
   if defined?(::JSON)
     def test_should_serialise_message_type_in_json
