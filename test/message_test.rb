@@ -58,6 +58,11 @@ class MessageTest < Test::Unit::TestCase
     assert_equal UserMessage::MessageTypes::Info, user_message.type
     assert_equal "headline", user_message.headline
     assert_equal "body", user_message.body.first
+    
+    user_message = UserMessage.error2("string")
+    assert_equal UserMessage::MessageTypes::Error, user_message.type
+    assert_equal "string", user_message.headline
+    assert_equal "string", user_message.body.first
   end
 
   if defined?(::JSON)

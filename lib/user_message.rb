@@ -10,7 +10,7 @@ require 'user_message/message_helper'
 
 
 module UserMessage
-  VERSION = '0.2.6'
+  VERSION = '0.2.7'
 
   UserMessage::MessageTypes.each do |type|
     method_name = type.name.downcase
@@ -18,5 +18,11 @@ module UserMessage
       UserMessage::Message.new(:type  => type, :headline => args.first, :body => args[1])
     end
     module_function method_name.to_sym
+    
+    method_name2 = "#{method_name}2"
+    define_method method_name2 do |*args|
+      UserMessage::Message.new(:type  => type, :headline => args.first, :body => args.first)
+    end
+    module_function method_name2.to_sym
   end
 end
