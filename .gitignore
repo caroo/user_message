@@ -1,3 +1,5 @@
 .*sw[pon]
 .bundle
 .rvmrc
+Gemfile.lock
+pkg

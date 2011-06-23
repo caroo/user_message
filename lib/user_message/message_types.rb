@@ -1,3 +1,5 @@
+require 'renum'
+
 module UserMessage
   enum :MessageTypes do
   
