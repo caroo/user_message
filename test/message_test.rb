@@ -29,7 +29,7 @@ class MessageTest < Test::Unit::TestCase
   end
   
   def test_should_accept_active_record_errors_object_for_body
-    ar_errors = ActiveRecord::Errors.new(mock("Object"))
+    ar_errors = ActiveModel::Errors.new(mock("Object"))
     ar_errors.add("firstname", "Ein Name muss vorhanden sein.")
     ar_errors.add("zipcode", "PLZ muss gegeben sein.")
     ar_errors.add("firstname", "Der Name darf keine Sonderzeichen enthalten.")
@@ -39,7 +39,7 @@ class MessageTest < Test::Unit::TestCase
   end
   
   def test_should_have_simple_messages_and_active_record_errors_alongside_in_the_body_and_iterate_over_them_in_a_unified_way
-    ar_errors = ActiveRecord::Errors.new(mock("Object"))
+    ar_errors = ActiveModel::Errors.new(mock("Object"))
     ar_errors.add("firstname", "Ein Name muss vorhanden sein.")
     ar_errors.add("zipcode", "PLZ muss gegeben sein.")
     ar_errors.add("firstname", "Der Name darf keine Sonderzeichen enthalten.")

@@ -1,7 +1,6 @@
 require "user_message/version"
 
-require 'active_support'
-require 'action_pack'
+require 'user_message/railtie'
 require 'user_message/message_types'
 require 'user_message/message'
 require 'user_message/message_helper'

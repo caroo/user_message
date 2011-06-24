@@ -3,21 +3,17 @@ require 'test_helper.rb'
 class MessageHelperTest < Test::Unit::TestCase
   include UserMessage::MessageHelper
   include ActionView::Helpers::TagHelper
-  
-  # nur um ActionController zu simmulieren, nötig damit ActionController::Flash funktioniert
-  def assign_shortcuts(*);end
-  def perform_action(*);end
-  def reset_session(*);end
-  def redirect_to(*);end
-  def self.helper_method(*);end
-  def session(*)
-    {}
+  def flash
+    @flash ||= {}
   end
   
-  include ActionController::Flash
+  def setup
+    @flash = {}
+  end
+  
   
   def test_should_render_user_messages_which_are_stored_under_the_messages_key_in_the_flash
-    errors = ActiveRecord::Errors.new(mock("Object"))
+    errors = ActiveModel::Errors.new(mock("Object"))
     errors.add("name", "Das ist nen doofer Name.")
     errors.add("name", "Der Name muss Hans Wurst sein.")
     errors.add("company", "Es sind keine Sonderzeichen erlaubt.")
