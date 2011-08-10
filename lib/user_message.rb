@@ -10,13 +10,15 @@ module UserMessage
   UserMessage::MessageTypes.each do |type|
     method_name = type.name.downcase
     define_method method_name do |*args|
-      UserMessage::Message.new(:type  => type, :headline => args.first, :body => args[1])
+      translation_values = args.extract_options!
+      UserMessage::Message.new(:type  => type, :headline => args.first, :body => args[1], :translation_values => translation_values)
     end
     module_function method_name.to_sym
     
     method_name2 = "#{method_name}2"
     define_method method_name2 do |*args|
-      UserMessage::Message.new(:type  => type, :headline => args.first, :body => args.first)
+      translation_values = args.extract_options!
+      UserMessage::Message.new(:type  => type, :headline => args.first, :body => args.first, :translation_values => translation_values)
     end
     module_function method_name2.to_sym
   end

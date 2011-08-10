@@ -1,17 +1,17 @@
 <div id="<%= div_id %>" class="user_message clearfix mb20<%= color ? " #{color}" : "" %>">
   <div class="fll mr20">
-    <span><%= type_translated %></span>
+    <span><%= raw type_translated %></span>
   </div>
   <div class="user_message_inner">
-    <h5><%= headline %></h5>
+    <h5><%= raw headline %></h5>
     <%- if body.size > 1 -%>
       <ul>
         <%- body.each do |body_element| -%>
-          <li><%= body_element %></li>
+          <li><%= raw body_element %></li>
         <%- end -%>
       </ul>
     <%- else -%>
-      <p><%= body.first %></p>
+      <p><%= raw body.first %></p>
     <%- end -%>
   </div>
 </div>
