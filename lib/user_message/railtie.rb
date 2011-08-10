@@ -7,7 +7,6 @@ require 'action_view/paths'
 
 module UserMessage
   class Railtie < Rails::Railtie
-    
     initializer "user_message.append_view_paths" do
       view_path = File.expand_path(File.join(File.dirname(__FILE__), *%w[.. views]))
       ActionController::Base.append_view_path(view_path)  unless ActionController::Base.view_paths.include?(view_path)
