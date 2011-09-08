@@ -8,13 +8,12 @@ module UserMessage
     # * user_messages.registration_successfull.headline
     # * user_messages.headline.registration_successful
     # * user_messages.registration_successful
-    # * Registration Successful (humanized key version as fallback)
     def self.translate(translation_key, type = "headline", translation_values = {})
       defaults = [
         :"#{translation_key}.#{type}",
         :"#{type}.#{translation_key}",
-        translation_key,
-        ActiveSupport::Inflector.humanize(translation_key)
+        translation_key.to_sym,
+        translation_key.to_s
       ]
       I18n.translate(defaults.shift, {:default => defaults, :scope => [:user_messages]}.merge(translation_values))
     end
@@ -48,7 +47,7 @@ module UserMessage
       extend Forwardable
       include Enumerable
       
-      def_delegators :merged_content, :first, :[], :size, :each
+      def_delegators :@content, :first, :[], :size, :each, :last
       
       def initialize(string_or_ar_errors = nil, translation_values = nil)
         @translation_values = translation_values || {}
@@ -56,15 +55,14 @@ module UserMessage
         self << string_or_ar_errors if string_or_ar_errors
       end
       
-      def <<(content)
-        @content << (content.is_a?(Symbol) ? UserMessage::Message.translate(content, "body", @translation_values) : content)
-      end
-
-      private
-      
-      def merged_content
-        @content.inject([]) do |mem, content|
-          mem + (content.respond_to?(:full_messages) ? content.collect {|attr, msg| msg} : [content])
+      def <<(additional_content)
+        if additional_content.respond_to?(:full_messages) # active model errors
+          @content += additional_content.map{|attr, message| message}
+        else
+          additional_content = Array(additional_content)
+          additional_content.each do |message|
+            @content << UserMessage::Message.translate(message, "body", @translation_values)
+          end
         end
       end
     end

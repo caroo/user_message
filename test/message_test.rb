@@ -28,7 +28,7 @@ class MessageTest < Test::Unit::TestCase
     assert_equal 2, message.body.size
   end
   
-  def test_should_accept_active_record_errors_object_for_body
+  def test_should_accept_active_model_errors_object_for_body
     ar_errors = ActiveModel::Errors.new(mock("Object"))
     ar_errors.add("firstname", "Ein Name muss vorhanden sein.")
     ar_errors.add("zipcode", "PLZ muss gegeben sein.")
@@ -54,17 +54,17 @@ class MessageTest < Test::Unit::TestCase
   end
   
   def test_should_have_shortcut_methods
-    user_message = UserMessage.info("headline", "body")
+    user_message = UserMessage.info("This is headline", "This is body")
     assert_equal UserMessage::MessageTypes::Info, user_message.type
-    assert_equal "headline", user_message.headline
-    assert_equal "body", user_message.body.first
+    assert_equal "This is headline", user_message.headline
+    assert_equal "This is body", user_message.body.first
     
-    user_message = UserMessage.error2("string")
+    user_message = UserMessage.error2("Hello world")
     assert_equal UserMessage::MessageTypes::Error, user_message.type
-    assert_equal "string", user_message.headline
-    assert_equal "string", user_message.body.first
+    assert_equal "Hello world", user_message.headline
+    assert_equal "Hello world", user_message.body.first
   end
-
+  
   if defined?(::JSON)
     def test_should_serialise_message_type_in_json
       message = UserMessage::Message.new(:type => UserMessage::MessageTypes::Error)

@@ -1,0 +1,17 @@
+---
+  en:
+    user_messages:
+      test_message: This is a test
+      test_message2:
+        headline: This is test 2 headline
+        body: This is test 2 body
+      headline:
+        test_message3: This is test 3 headline
+      body:
+        test_message3: This is test 3 body
+        body_array:
+          element1: This is body element 1
+          element2: This is body element 2
+      test_interpolation:
+        headline: This is %{content} headline
+        body: This is %{content} body
