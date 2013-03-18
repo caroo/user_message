@@ -10,15 +10,14 @@ Gem::Specification.new do |s|
   s.homepage    = ""
   s.summary     = %q{User message representation}
   s.description = %q{Renders user messages nicely}
-  s.add_dependency "activemodel", "~> 3", ">= 3.0.9"
-  s.add_dependency "actionpack", "~> 3", ">= 3.0.9"
-  s.add_dependency "railties", "~> 3", ">= 3.0.9"
-  s.add_dependency "renum", ">= 1.3.0"
+  s.add_dependency "activemodel", "~> 3.0", ">= 3.0.9"
+  s.add_dependency "actionpack", "~> 3.0", ">= 3.0.9"
+  s.add_dependency "railties", "~> 3.0", ">= 3.0.9"
+  s.add_dependency "degu"
   s.add_dependency "i18n", ">= 0.5.0"
-  
+
   s.add_development_dependency "rake"
-  s.add_development_dependency "ruby-debug"
-  s.add_development_dependency "test-unit", "2.0.9"
+  s.add_development_dependency "test-unit"
   s.add_development_dependency "mocha"
 
   s.files         = `git ls-files`.split("\n")

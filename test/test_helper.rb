@@ -1,9 +1,8 @@
 require 'rubygems'
-require 'ruby-debug'
 
 gem 'test-unit'
 require 'test/unit'
-require 'mocha'
+require 'mocha/setup'
 
 require 'stringio'
 require 'rails'
