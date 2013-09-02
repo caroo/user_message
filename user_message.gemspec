@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.add_dependency "actionpack", "~> 3.0", ">= 3.0.9"
   s.add_dependency "railties", "~> 3.0", ">= 3.0.9"
   s.add_dependency "degu"
-  s.add_dependency "i18n", ">= 0.5.0"
+  s.add_dependency "i18n", "~> 0.6.0"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "test-unit"
