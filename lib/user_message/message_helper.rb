@@ -3,7 +3,7 @@ module UserMessage
   
     def render_user_messages(div_id = "user_message")
       if flash[:messages].present?
-        render :partial => "user_message/user_message",
+        ActionView::Base.new(ActionController::Base.view_paths).render :partial => "user_message/user_message",
           :locals => {
             :color           => flash[:messages].type.color,
             :type_name       => flash[:messages].type.name,
